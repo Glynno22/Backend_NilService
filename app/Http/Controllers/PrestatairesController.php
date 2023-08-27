@@ -12,7 +12,14 @@ class PrestatairesController extends Controller
      */
     public function index()
     {
-        //
+        $prestataite=Prestataite::all();
+        if($prestataite!= Null){
+            return $prestataite;
+        }else{
+            return response()->json([
+                'message'=>'aucune prestataite enregistre'
+            ]);
+        }
     }
 
     /**
