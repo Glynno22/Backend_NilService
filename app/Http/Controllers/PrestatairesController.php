@@ -12,12 +12,12 @@ class PrestatairesController extends Controller
      */
     public function index()
     {
-        $prestataite=Prestataite::all();
-        if($prestataite!= Null){
-            return $prestataite;
+        $prestataire=Prestataires::all();
+        if($prestataire!= Null){
+            return $prestataire;
         }else{
             return response()->json([
-                'message'=>'aucune prestataite enregistre'
+                'message'=>'aucune prestataire enregistre'
             ]);
         }
     }
