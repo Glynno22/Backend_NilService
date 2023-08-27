@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //********* * les routes pour le model client*******
 
-Route::get('listeClient',[BoutiqueController::class,'index']);
-Route::post('creeClient',[BoutiqueController::class,'store']);
-Route::get('rechercheClient/{id}',[BoutiqueController::class,'show']);
-Route::put('updateClient/{id}',[BoutiqueController::class,'update']);
-Route::delete('suppresionClient/{id}',[BoutiqueController::class,'destroy']);
+Route::get('listeClient',[ClientControllers::class,'index']);
+Route::post('creeClient',[ClientControllers::class,'store']);
+Route::get('rechercheClient/{id}',[ClientControllers::class,'show']);
+Route::put('updateClient/{id}',[ClientControllers::class,'update']);
+Route::delete('suppresionClient/{id}',[ClientControllers::class,'destroy']);
