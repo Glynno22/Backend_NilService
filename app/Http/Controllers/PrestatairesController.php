@@ -35,7 +35,50 @@ class PrestatairesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'pays'=>'required',
+            'quartier'=>'required',
+            'ville'=>'required',
+            'categorie'=>'required',
+            'scanner'=>'required',
+            'photo'=>'required',
+            'cni'=>'required',
+            'description'=>'required',
+            'code'=>'required',
+            'parrain'=>'required',
+            'statut'=>'required',
+            'dateCreation'=>'required',
+            
+
+        ],
+    [
+        'cni'=>'veillez remplire tout les champs',
+    ]
+);
+        $prestataire= new Prestataires;
+  
+        $prestataire->nom = $request->nom;
+        $prestataire->email = $request->email;
+        $prestataire->phone = $request->phone;
+        $prestataire->pays = $request->pays;
+        $prestataire->ville = $request->ville;
+        $prestataire->quartier = $request->quartier;
+        $prestataire->categorie = $request->categorie;
+        $prestataire->scanner = $request->scanner;
+        $prestataire->photo = $request->photo;
+        $prestataire->cni = $request->cni;
+        $prestataire->description = $request->description;
+        $prestataire->code = $request->code;
+        $prestataire->parrain = $request->parrain;
+        $prestataire->statut = $request->statut;
+        $prestataire->dateCreation = $request->dateCreation;
+        $prestataire->save();
+        return response()->json([
+            'message'=>'prestataire cree avec succes'
+        ]);
     }
 
     /**
