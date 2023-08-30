@@ -84,9 +84,17 @@ class PrestatairesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prestataires $prestataires)
+    public function show($id)
     {
-        //
+        $prestataire=Prestataires::find($id);
+        if($prestataire){
+            return $prestataire;
+
+        }else{
+            return response()->json([
+                'message'=>'aucun prestataire  ne correspond a cet id '
+            ]);
+        }
     }
 
     /**
@@ -102,7 +110,8 @@ class PrestatairesController extends Controller
      */
     public function update(Request $request, Prestataires $prestataires)
     {
-        //
+    
+
     }
 
     /**
