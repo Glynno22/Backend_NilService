@@ -182,8 +182,21 @@ class PrestatairesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prestataires $prestataires)
+    public function destroy( $id)
     {
-        //
+        $prestataire=Prestataires::find($id);
+        if($prestataire){
+          
+          $prestataire->delete();
+
+          return response()->json([
+            "message"=>"prestataire suprimer avec succes"
+          ]);
+        }else{
+            return response()->json([
+                "message"=>"aucun prestataire ne correspond a cette id"
+            ]);
+        }
+    
     }
 }
