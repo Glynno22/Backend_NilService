@@ -108,9 +108,74 @@ class PrestatairesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prestataires $prestataires)
+    public function update( $id,Request $request)
     {
-    
+        
+        $request->validate([
+            'nom'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'pays'=>'required',
+            'quartier'=>'required',
+            'ville'=>'required',
+            'categorie'=>'required',
+            'scanner'=>'required',
+            'photo'=>'required',
+            'cni'=>'required',
+            'description'=>'required',
+            'code'=>'required',
+            'parrain'=>'required',
+            'statut'=>'required',
+            'dateCreation'=>'required',
+            
+
+                ],
+            [
+                'cni'=>'veillez remplire tout les champs',
+            ]
+        );
+
+        $prestataire=Prestataires::find($id);
+
+        if($prestataire){
+            $prestataire->nom = $request->nom;
+            $prestataire->email = $request->email;
+            $prestataire->phone = $request->phone;
+            $prestataire->pays = $request->pays;
+            $prestataire->quartier = $request->quartier;
+            $prestataire->ville = $request->ville;
+            $prestataire->categorie = $request->categorie;
+            $prestataire->description = $request->description;
+            $prestataire->code = $request->code;
+            $prestataire->parrain = $request->parrain;
+            $prestataire->statut = $request->statut;
+            $prestataire->dateCreation = $request->dateCreation;
+            if ($request->hasFile('scanner')) {
+                $scanner = $request->file('scanner');
+                $scanner->store('public/images_scanner'); // Remplace "images" par le nom de ton dossier de stockage
+                $prestataire->scanner = $scanner->getClientOriginalName();
+            }
+
+            if ($request->hasFile('photo')) {
+                $photo = $request->file('photo');
+                $photo->store('public/images_photos'); // Remplace "images" par le nom de ton dossier de stockage
+                $prestataire->photo = $photo->getClientOriginalName();
+            }
+        
+            if ($request->hasFile('cni')) {
+                $cni = $request->file('cni');
+                $cni->store('public/images_cni'); // Remplace "images" par le nom de ton dossier de stockage
+                $prestataire->cni = $cni->getClientOriginalName();
+            }
+            $prestataire->save();
+
+            return response()->json([
+                'message' => 'Prestataire mis à jour avec succès',
+            ]);
+        }
+        
+
+
 
     }
 
