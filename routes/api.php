@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendeursController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//Vendeur
+Route::get('ListeMarketV',[VendeursController::class,'index']);
+Route::post('CreateMarketV',[VendeursController::class,'store']);
+Route::get('SearchMarketV/{id}',[VendeursController::class,'show']);
+Route::put('UpdateMarketV/{id}',[VendeursController::class,'update']);
+Route::delete('DeleteMarketV/{id}',[VendeursController::class,'destroy']);
+Route::put('Activer_ou_DesactiverchMarketV/{id}',[VendeursController::class,'toggleActivation']);

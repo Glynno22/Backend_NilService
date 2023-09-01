@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendeur', function (Blueprint $table) {
+        Schema::create('vendeurs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->string('email');
@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('ville');
             $table->string('quartier');
             $table->string('boutique');
-            $table->date('dateCreation');
             $table->string('code');
             $table->string('parrain');
             $table->string('status');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
