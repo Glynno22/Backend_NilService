@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('dateCreation');
             $table->string('code');
             $table->string('parrain');
-            $table->string('status');
+            $table->integer('status');// 0 signifie activer et 1 desactiver
             $table->timestamps();
         });
     }

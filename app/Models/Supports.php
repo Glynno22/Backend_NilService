@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Supports extends Model
 {
     use HasFactory;
+
+    protected $table = 'supports';
+
+    protected $fillable = [
+        'id',
+        'nomSup',
+        'emailSup',
+        'motPass',
+        'telSup',
+        'positionSup'
+    ];
 }

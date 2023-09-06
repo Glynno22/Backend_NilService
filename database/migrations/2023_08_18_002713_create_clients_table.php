@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('adresseClient');
             $table->string('motPasse');
             $table->string('telClient');
+            $table->integer('statut');// 0 signifie activer et 1 desactiver
             $table->timestamps();
         });
     }
