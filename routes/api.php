@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministrateurController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\PrestatairesController;
 use App\Http\Controllers\ProduitsController;
@@ -68,6 +69,14 @@ Route::put('editerclient/{id}',[ClientsController::class,'update']);
 Route::delete('supprimerclient/{id}',[ClientsController::class,'destroy']);
 Route::put('modifierstatutclient/{id}',[ClientsController::class,'toggleActivation']);
 Route::get('rechercheclient/{id}',[ClientsController::class,'show']);
+
+
+/*------------------------routes pour administrateur------------------------------*/
+Route::get('listeadmin',[AdministrateurController::class,'index']);
+Route::post('ajouteradmin',[AdministrateurController::class,'store']);
+Route::put('editeradmin/{id}',[AdministrateurController::class,'update']);
+Route::delete('supprimeradmin/{id}',[AdministrateurController::class,'destroy']);
+Route::get('rechercheadmin/{id}',[AdministrateurController::class,'show']);
 
 
 
