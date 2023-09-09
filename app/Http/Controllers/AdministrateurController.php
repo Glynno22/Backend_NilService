@@ -29,7 +29,7 @@ class AdministrateurController extends Controller
     public function store(Request $request)
     {
         $administrateur = new administrateur;
-
+        $administrateur->nom = $request->nom;
         $administrateur->email = $request->email;
         $administrateur->motPasse = $request->motPasse;
 
@@ -71,6 +71,7 @@ class AdministrateurController extends Controller
     {
         $administrateur = administrateur::find($id);
         if($administrateur){
+            $administrateur->nom = $request->nom;
              $administrateur->email = $request->email;
              $administrateur->motPasse = $request->motPasse;
 

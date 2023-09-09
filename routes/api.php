@@ -44,7 +44,11 @@ Route::get('recherchersupport/{id}',[SupportsController::class,'show']);
 
 
 /*-------------------------route pour vendeurs------------------*/
+Route::put('changeStatut/{id}',[VendeursController::class,'edit']);
+
+
 Route::get('listevendeur',[VendeursController::class,'index']);
+// Route::post('ajoutervendeur',[VendeursController::class,'store']);
 Route::post('ajoutervendeur',[VendeursController::class,'store']);
 Route::get('recherchervendeur/{id}',[VendeursController::class,'show']);
 Route::put('editervendeur/{id}',[VendeursController::class,'update']);

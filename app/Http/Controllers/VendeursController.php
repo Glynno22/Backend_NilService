@@ -93,9 +93,25 @@ class VendeursController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vendeurs $vendeurs)
+    public function edit($id)
     {
-        //
+        $vendeurs = Vendeurs::findOrFail($id);
+        if ($vendeurs) {
+            if ($vendeurs->status==0) {
+                $vendeurs->status=1;
+            } else {
+                $vendeurs->status=0;
+            }
+
+            $vendeurs->update();
+            return response()->json([
+                'message' => 'Mise a jours effectuee avec succes !'
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Ce vendeur existe pas.'
+            ]);
+    }
     }
 
     /**
